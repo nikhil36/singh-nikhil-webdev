@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <title>Profile</title>
+    <title>New Page</title>
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet"/>
@@ -14,17 +14,26 @@
 
 <nav class="navbar navHead navbar-fixed-top">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-6 navbar-header">
+            <div class="row">
+
+            <div class="col-xs-10 ">
+                <p class="navbar-text pull-left">
+                    <a href="widget-list.html" class="navbar-link1">
+          <span class="glyphicon glyphicon-chevron-left">
+          </span>
+                    </a>
+                </p>
+
+
                 <!--<div class="r">-->
-                <label class="navbar-brandEdited" >
-                    Profile
+                <label class="navbar-brandEdited">
+                    Widget Edit
                 </label>
                 <!--</div>-->
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-2 ">
                 <p class="navbar-text pull-right">
-                    <a do class="navbar-link1 inactiveLink">
+                    <a href="widget-list.html" class="navbar-link1">
           <span class="glyphicon glyphicon-ok">
           </span>
                     </a>
@@ -35,41 +44,39 @@
 </nav>
 <br>
 <br>
-<div class="container">
-    <form>
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" placeholder="Username">
-        </div>
-        <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="alice@wonderland.com">
-        </div>
-        <div class="form-group">
-            <label for="first-name">First Name</label>
-            <input type="text" class="form-control" id="first-name" placeholder="Alice">
-        </div>
-        <div class="form-group">
-            <label for="last-name">Last Name</label>
-            <input type="text" class="form-control" id="last-name" placeholder="Wonderland">
-        </div>
-    </form>
 
-    <a class="btn btn-primary btn-block"
-       href="website-list.html">Websites</a>
-    <a class="btn btn-danger  btn-block"
-       href="login.html">Logout</a>
+
+<div class="container-fluid">
+    <form name="pageForm">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Widget Name">
+        </div>
+        <div class="form-group">
+        <label for="title">Text</label>
+        <input type="text" class="form-control" id="title" placeholder="Widget Text">
+    </div>
+        <div class="form-group">
+            <label for="size">Size</label>
+            <input type="text" class="form-control" id="size" placeholder="Size">
+        </div>
+
+    </form>
+    <a class="btn btn-danger btn-block"
+       href="widget-list.html">Delete</a>
 </div>
-<br><br><br><br>
+
+<br><br><br>
+<br>
 <nav class="navbar navHead navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="row ">
-                <div class="col-xs-6">
-        </div>
+            <div class="col-xs-6">
+            </div>
 
             <div class="col-xs-6">
                 <p class="navbar-text pull-right">
-                    <a  class="navbar-link1">
+                    <a href="profile.html" class="navbar-link1">
                        <span class="glyphicon glyphicon-user">
                            </span>
                     </a>
