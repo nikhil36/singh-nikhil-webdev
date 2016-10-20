@@ -50,8 +50,6 @@ body {
  }
 .glyphicon-padding1{
       z-index: 2;
-      position: absolute;
-      top: 0px;
       right: 25px;
   }
 

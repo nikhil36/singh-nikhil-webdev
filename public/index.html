@@ -1,30 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Web Dev Course Home Page</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="This is my homepage">
+    <meta name="author" content="Nikhil Singh">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="assets/css/bootstrap.min.css">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="assets/css/jumbotron.css" rel="stylesheet"/>
 </head>
 <body>
-    <h1>Web Dev Course Home Page</h1>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Web Dev Course Home Page</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li> <a href="project/index.html">Project</a></li>
+                <li> <a href="assignment/index.html">Assignment</a></li>
+                <li>  <a href="https://github.com/nikhil36/singh-nikhil-webdev">GitHub</a></li>
+                <li> <a href="test/index.html">Test MongoDB</a></li>
+            </ul>
 
-    <p>
-        Customize this home page to your linking.
-    </p>
+        </div>
+    </div>
+</nav>
+<br>
+<br>
+<div class="container-fluid">
 
-    <h2>Required links</h2>
-    <ul>
-        <li>
-            <a href="project/index.html">Project</a>
-        </li>
-        <li>
-            <a href="assignment/index.html">Assignment</a>
-        </li>
-        <li>
-            <a href="test/index.html">Test MongoDB</a>
-        </li>
-        <li>
-            <a href="#">Your public repository at GitHub.com</a>
-        </li>
-    </ul>
+<div class="row">
+    <div class="col-xs-2"></div>
+    <div class="col-xs-8">
+    <img class="img-responsive img-middle" src="assets/construction.jpeg" alt="Under Construction">
+        </div>
+    <div class="col-xs-2"></div>
+</div>
+    <div class="row"><h1 class="text-center">Please check the links in the navigation bar</h1></div>
+</div>
+<script src="assets/js/homepage.js"></script>
 </body>
 </html>

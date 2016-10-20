@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <form name="pageForm">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input ng-model="model.widget.widgetType"  type="text" class="form-control" id="name" placeholder="Widget Name">
+        </div>
+        <div class="form-group">
+            <label for="title">Text</label>
+            <input ng-model="model.widget.url"  type="text" class="form-control" id="title" placeholder="Widget Text">
+        </div>
+
+        <div class="form-group">
+            <label for="url">URL</label>
+            <input ng-model="model.widget.url" type="url" class="form-control" id="url" placeholder="URL">
+        </div>
+        <div class="form-group">
+            <label for="width">Width</label>
+            <input ng-model="model.widget.width"  type="text" class="form-control" id="width" placeholder="Width">
+        </div>
+        <a class="btn btn-danger btn-block" ng-click="model.deleteWidget()"
+           href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget">Delete</a>
+    </form>
+</div>

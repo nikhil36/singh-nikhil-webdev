@@ -1,0 +1,18 @@
+
+    <form name="pageForm">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input ng-model="model.widget.text" type="text" class="form-control" id="name" placeholder="Widget Name">
+        </div>
+        <div class="form-group">
+            <label for="title">Text</label>
+            <input ng-model="model.widget.text" type="text" class="form-control" id="title" placeholder="Widget Text">
+        </div>
+        <div class="form-group">
+            <label for="size">Size</label>
+            <input ng-model="model.widget.size" type="text" class="form-control" id="size" placeholder="Size">
+        </div>
+
+    </form>
+    <a class="btn btn-danger btn-block" ng-click="model.deleteWidget()"
+       href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget">Delete</a>

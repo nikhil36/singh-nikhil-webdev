@@ -1,0 +1,29 @@
+<nav class="navbar navHead navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 navbar-header navbar-brand">
+                 <p class="text-center">WebAppMaker</p>
+
+                 </div>
+        </div>
+    </div>
+</nav>
+<br><br>
+<div class="container">
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+    <h1>Login</h1>
+    <input ng-model="model.username" type="text"
+           class="form-control"
+           placeholder="username"/>
+    <input ng-model="model.password"  type="password"
+           class="form-control"
+           placeholder="password"/>
+
+    <a class="btn btn-primary btn-block"
+       ng-click="model.login(model.username,model.password)">Login</a>
+    <a class="btn btn-success btn-block"
+       href="#/register">Register</a>
+
+</div>
