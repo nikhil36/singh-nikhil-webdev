@@ -14,12 +14,10 @@
         vm.login = login;
 
         function login(username, password) {
-            console.log('Username:', username);
             user = UserService.findUserByCredentials(username, password);
             if (user === null) {
                 vm.error = "Unable to login!";
             } else {
-                console.log("User:", user)
                 $location.url("/user/" + user._id);
             }
         }
@@ -31,8 +29,7 @@
         vm.register = register;
 
         function register(username, password, verifyPassword) {
-            console.log("Reg details", [username, password, verifyPassword]);
-            if(username === undefined || password === undefined || verifyPassword === undefined)
+             if(username === undefined || password === undefined || verifyPassword === undefined)
                 vm.error = "Please enter all details!"
             else if (password === verifyPassword) {
                 user = {_id: ''+Math.round(getRandomArbitrary(800,900)),
@@ -43,9 +40,7 @@
                 if (user === null) {
                     vm.error = "Unable to create user now!";
                 } else {
-                    console.log("User:", user)
-                    $location.url("/user/" + user._id);
-
+                          $location.url("/user/" + user._id);
                 }
             }
             else
@@ -67,9 +62,7 @@
         function init() {
             vm.user = UserService.findUserById(vm.userId);
         }
-
         init();
-
     }
 
 })();

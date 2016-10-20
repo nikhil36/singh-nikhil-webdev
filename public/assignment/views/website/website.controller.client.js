@@ -32,8 +32,6 @@
         init();
 
         function createWebsite(name, desc,uid) {
-            console.log("In createWebsite",[name,desc,uid]);
-
             if(name == undefined || desc == undefined)
             {
                 vm.error = "Please fill all the fields"
@@ -47,7 +45,6 @@
             if (website === null) {
                 vm.error = "Unable to create a website right now, please try again later";
             } else {
-                console.log("User:", uid)
                 $location.url("/user/" + uid+"/website");
 
             }
@@ -70,8 +67,6 @@
         function init() {
             vm.websites = WebsiteService.findWebsitesByUser(vm.uid);
             vm.website = WebsiteService.findWebsiteById(vm.wid);
-            console.log("websites",  vm.websites)
-            console.log("website",  vm.website)
         }
         init();
 

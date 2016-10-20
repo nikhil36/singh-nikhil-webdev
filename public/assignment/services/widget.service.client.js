@@ -78,7 +78,6 @@
                     leftWidgets.push(widget)
                 }
             }
-            console.log("leftWidgets",leftWidgets);
             widgets = leftWidgets;
 
         }

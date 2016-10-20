@@ -21,7 +21,6 @@
 
         function init() {
             vm.widgets = WidgetService.findWidgetsByPageId(vm.pid);
-            console.log("widgets:",vm.widgets);
         }
 
         init();
@@ -34,7 +33,6 @@
             var parts = url.split('/')
             var id = parts[parts.length - 1];
             url = "https://www.youtube.com/embed/" + id;
-            console.log("Url is ", url);
             return $sce.trustAsResourceUrl(url);
         }
     }
@@ -56,13 +54,12 @@
                 vm.widget = {"_id": vm.wgid, "widgetType": "HEADER", "pageId": vm.pid, "size": 2, "text": ""};
             }
             else if (type === "Image") {
-                vm.widget =    {
+                vm.widget = {
                     "_id": vm.wgid, "widgetType": "IMAGE", "pageId": vm.pid, "width": "100%",
                     "url": ""
                 }
             }
-            else if(type === "YouTube")
-            {
+            else if (type === "YouTube") {
                 vm.widget = {
                     "_id": vm.wgid, "widgetType": "YOUTUBE", "pageId": vm.pid, "width": "100%",
                     "url": ""
@@ -70,7 +67,7 @@
             }
             WidgetService.createWidget(vm.wgid, vm.widget)
 
-            $location.url("/user/" + vm.uid + "/website/"+vm.wid+"/page/"+vm.pid+"/widget/"+vm.wgid);
+            $location.url("/user/" + vm.uid + "/website/" + vm.wid + "/page/" + vm.pid + "/widget/" + vm.wgid);
 
         }
 
@@ -100,9 +97,8 @@
         init();
 
         function updateWidget(widget) {
-            console.log('In updateWidget : ', widget);
+            console.log('In updateWidget');
             WidgetService.updateWidget(vm.wgid, widget);
-
         }
 
         function deleteWidget() {

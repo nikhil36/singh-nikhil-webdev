@@ -29,7 +29,7 @@
         }
 
         function findPageByWebsiteId(wid) {
-            console.log("In findPageByWebsiteId : ",wid);
+            // console.log("In findPageByWebsiteId : ",wid);
             var userPages=[];
             for(p in pages)
             {
@@ -40,8 +40,7 @@
         }
 
         function findPageById(pageId) {
-            console.log("Pages:",pages)
-            console.log("In findPageById : ",pageId);
+            // console.log("In findPageById : ",pageId);
             for(p in pages)
             {
                 if(pages[p]._id === pageId)

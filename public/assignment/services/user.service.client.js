@@ -25,7 +25,6 @@
 
         function createUser(user) {
             users.push(user);
-            console.log("All users:",users);
             return user;
         }
 
@@ -34,8 +33,7 @@
             for (var u in users) {
                 var user = users[u];
                 if (user._id === _id) {
-                    console.log("found user")
-                    return user;
+                      return user;
                 }
             }
             return null;
@@ -51,8 +49,7 @@
             for (var u in users) {
                 var user = users[u];
                 if (user.username === username && user.password === password) {
-                    console.log("found user")
-                    found = true;
+                     found = true;
                     return user;
                 }
             }
