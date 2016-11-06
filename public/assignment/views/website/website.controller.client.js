@@ -15,40 +15,53 @@
 
         vm.uid = $routeParams["uid"];
         function init() {
-            vm.websites = WebsiteService.findWebsitesByUser(vm.uid);
+            var promise = WebsiteService.findWebsitesByUser(vm.uid);
+            promise
+                .success(function (websites) {
+                    vm.websites = websites
+                })
         }
+
         init();
     }
 
-    function NewWebsiteController($routeParams,$location, WebsiteService) {
+    function NewWebsiteController($routeParams, $location, WebsiteService) {
         console.log("In NewWebsiteController");
         var vm = this;
         vm.createWebsite = createWebsite;
 
         vm.uid = $routeParams["uid"];
         function init() {
-            vm.websites = WebsiteService.findWebsitesByUser(vm.uid);
+            var promise = WebsiteService.findWebsitesByUser(vm.uid);
+            promise
+                .success(function (websites) {
+                    vm.websites = websites
+                })
         }
+
         init();
 
-        function createWebsite(name, desc,uid) {
-            if(name == undefined || desc == undefined)
-            {
+        function createWebsite(name, desc, uid) {
+            if (name == undefined || desc == undefined) {
                 vm.error = "Please fill all the fields"
                 return
             }
-            website = {_id: ''+Math.round(getRandomArbitrary(800,900)),
-                name: name, developerId: uid}
-
-            website = WebsiteService.createWebsite(uid,website);
-
-            if (website === null) {
-                vm.error = "Unable to create a website right now, please try again later";
-            } else {
-                $location.url("/user/" + uid+"/website");
-
+            website = {
+                _id: '' + Math.round(getRandomArbitrary(800, 900)),
+                name: name, developerId: uid
             }
+
+            var promise = WebsiteService.createWebsite(uid, website);
+            promise.success(function (website) {
+                if (website === null) {
+                    vm.error = "Unable to create a website right now, please try again later";
+                } else {
+                    $location.url("/user/" + uid + "/website");
+
+                }
+            })
         }
+
         function getRandomArbitrary(min, max) {
             return Math.random() * (max - min) + min;
         }
@@ -65,21 +78,40 @@
         vm.deleteWebsite = deleteWebsite;
 
         function init() {
-            vm.websites = WebsiteService.findWebsitesByUser(vm.uid);
-            vm.website = WebsiteService.findWebsiteById(vm.wid);
+            WebsiteService.findWebsiteById(vm.wid)
+                .success(function (website) {
+                    vm.website = website
+                })
+
+            WebsiteService.findWebsitesByUser(vm.uid)
+                .success(function (websites) {
+                    vm.websites = websites
+                })
         }
+
         init();
 
 
-        function updateWebsite(wid,website) {
+        function updateWebsite(wid, website) {
             console.log("In updateWebsite");
-            WebsiteService.updateWebsite(vm.wid, website);
+            WebsiteService.updateWebsite(vm.wid, website)
+                .success(function () {
+                    $location.url("/user/" + vm.uid + "/website");
+                })
+                .error(function () {
+                    vm.error("Unable to update the website")
+                });
         }
 
         function deleteWebsite() {
-            WebsiteService.deleteWebsite(vm.wid);
-
-                $location.url("/user/" + vm.uid+"/website");
+            WebsiteService.deleteWebsite(vm.wid)
+                .success(function () {
+                    $location.url("/user/" + vm.uid + "/website");
+                })
+                .error(function () {
+                    vm.error("Unable to delete the website")
+                });
+            ;
 
 
         }

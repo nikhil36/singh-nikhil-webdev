@@ -6,7 +6,7 @@
             </div>
             <div class="col-xs-6">
                 <p class="navbar-text pull-right">
-                    <a do class="navbar-link1 inactiveLink">
+                    <a ng-click="model.updateUser()" class="navbar-link1">
                         <span class="glyphicon glyphicon-ok"></span>
                     </a>
                 </p>
@@ -42,6 +42,8 @@
        href="#/user/{{model.user._id}}/website">Websites</a>
     <a class="btn btn-danger  btn-block"
        href="#/login">Logout</a>
+    <a class="btn btn-warning  btn-block"
+       ng-click="model.unregisterUser()">Unregister</a>
 </div>
 <br><br><br><br>
 <nav class="navbar navHead navbar-fixed-bottom">

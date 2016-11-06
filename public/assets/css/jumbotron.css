@@ -57,3 +57,29 @@ body {
     transition: all 0.4s ease 0s;
   }
 }
+
+.navbar-brand {
+  font-size: 20px;
+  font-weight: 300;
+}
+
+  .navbar {
+    min-height: 75px;
+    border: 10px solid transparent;
+    border-radius: 0px;
+
+  }
+  .navbar-right
+  {
+    padding: 0px;
+  }
+
+  .navbar-header{
+    padding-right: 30px;
+  }
+
+  .nav{
+    padding-left: 15px;
+    font-size: 20px;
+    font-weight: 300;
+  }

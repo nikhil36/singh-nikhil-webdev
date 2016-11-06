@@ -15,7 +15,10 @@
         vm.wid = $routeParams["wid"];
         vm.uid = $routeParams["uid"];
         function init() {
-            vm.pages = PageService.findPageByWebsiteId(vm.wid);
+             PageService.findPageByWebsiteId(vm.wid)
+                 .success(function (pages) {
+                     vm.pages = pages;
+                 })
         }
         init();
 
@@ -39,15 +42,21 @@
             page = {_id: ''+Math.round(getRandomArbitrary(800,900)),
                 name: name, wid: wid}
 
-            page = PageService.createPage(page);
+           PageService.createPage(vm.wid,page)
+               .success(function(page){
+                   if (page === null) {
+                       vm.error = "Unable to create a page right now, please try again later";
+                   } else {
+                       console.log("User:", vm.uid)
+                       $location.url("/user/" + vm.uid+"/website/"+wid+"/page/");
 
-            if (page === null) {
-                vm.error = "Unable to create a page right now, please try again later";
-            } else {
-                console.log("User:", vm.uid)
-                $location.url("/user/" + vm.uid+"/website/"+wid+"/page/");
+                   }
+               })
+               .error(function(){
+                       vm.error = "Unable to create a page right now, please try again later";
+               })
 
-            }
+
         }
         function getRandomArbitrary(min, max) {
             return Math.random() * (max - min) + min;
@@ -66,7 +75,10 @@
 
         vm.pageId = $routeParams.pid;
         function init() {
-            vm.page = PageService.findPageById(vm.pageId);
+            PageService.findPageById(vm.pageId)
+                .success(function (page) {
+                    vm.page = page;
+                })
         }
         init();
 

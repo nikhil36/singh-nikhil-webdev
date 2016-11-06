@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-xs-10">
                 <p class="navbar-text pull-left">
-                    <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}" class="navbar-link1">
+                    <a href="#/user/{{model.uid}}/website/{{model.wid}}/page" class="navbar-link1">
                         <span class="glyphicon glyphicon-chevron-left"></span>
                     </a>
                 </p>
@@ -22,7 +22,7 @@
 </nav>
 <br>
 <br>
-<div class="container-fluid">
+<div wam-sortable class="container-fluid">
     <div ng-switch="widget.widgetType" ng-repeat="widget in model.widgets">
         <!--{{widget}}-->
         <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{widget._id}}"
