@@ -42,13 +42,14 @@
         init();
 
         function createWebsite(name, desc, uid) {
+            // console.log("desc:"+desc)
             if (name == undefined || desc == undefined) {
                 vm.error = "Please fill all the fields"
                 return
             }
-            website = {
-                _id: '' + Math.round(getRandomArbitrary(800, 900)),
-                name: name, developerId: uid
+            var website = {
+          //      _id: '' + Math.round(getRandomArbitrary(800, 900)),
+                name: name, description:desc
             }
 
             var promise = WebsiteService.createWebsite(uid, website);

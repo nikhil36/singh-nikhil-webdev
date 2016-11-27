@@ -39,8 +39,10 @@
                 vm.error = "Please fill all the fields"
                 return
             }
-            page = {_id: ''+Math.round(getRandomArbitrary(800,900)),
-                name: name, wid: wid}
+            var page = {
+                name: name,
+                title:title
+            }
 
            PageService.createPage(vm.wid,page)
                .success(function(page){
@@ -57,9 +59,6 @@
                })
 
 
-        }
-        function getRandomArbitrary(min, max) {
-            return Math.random() * (max - min) + min;
         }
 
     }

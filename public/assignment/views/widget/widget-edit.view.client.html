@@ -25,8 +25,32 @@
 <br>
 <br>
 <div class="container-fluid">
-       <div ng-include="'views/widget/widget-'+model.widget.widgetType+'.view.client.html'"></div>
+
+      <!--<div ng-include="'views/widget/widget-'+model.widget.widgetType+'.view.client.html'"></div>-->
+    <div ng-switch="model.widget.type">
+        <div ng-switch-when="HEADER">
+            <ng-include src="'views/widget/widget-header.view.client.html'" />
+        </div>
+        <div ng-switch-when="IMAGE">
+            <ng-include src="'views/widget/widget-image.view.client.html'" />
+        </div>
+        <div ng-switch-when="YOUTUBE" class="youtube-widget">
+            <ng-include src="'views/widget/widget-youtube.view.client.html'" />
+        </div>
+        <div ng-switch-when="HTML">
+            <ng-include src="'views/widget/widget-html-edit.view.client.html'" />
+        </div>
+        <div ng-switch-when="TEXT">
+            <ng-include src="'views/widget/widget-text-edit.view.client.html'" />
+        </div>
+        <div ng-switch-default>
+            <div class="alert alert-danger" role="alert">
+                Cannot edit this widget
+            </div>
+        </div>
+    </div>
 </div>
+
 
 <br><br><br>
 <br>

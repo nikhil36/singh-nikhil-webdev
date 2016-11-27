@@ -1,31 +1,31 @@
 <div class="container-fluid">
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input ng-model="model.widget.widgetType" type="text" class="form-control" id="name" placeholder="Widget Name">
-        </div>
-        <div class="form-group">
-            <label for="url">URL</label>
-            <input ng-model="model.widget.url"  type="url" class="form-control" id="url" placeholder="URL">
-        </div>
-        <div class="form-group">
-            <label for="width">Width</label>
-            <input ng-model="model.widget.width"  type="text" class="form-control" id="width" placeholder="Width">
-        </div>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input ng-model="model.widget.name" type="text" class="form-control" id="name" placeholder="Widget Name">
+    </div>
+    <div class="form-group">
+        <label for="url">URL</label>
+        <input ng-model="model.widget.url" type="url" class="form-control" id="url" placeholder="URL">
+    </div>
+    <div class="form-group">
+        <label for="width">Width</label>
+        <input ng-model="model.widget.width" type="text" class="form-control" id="width" placeholder="Width">
+    </div>
 
-
-  <form action="/api/uploads"  method="post" enctype="multipart/form-data">
-        <input  name="file" type="file" class="form-control"/>
-        <input  name="width" value="{{model.widget.width}}" style="display: none"/>
-        <input  name="userId" value="{{model.uid}}" style="display: none"/>
-        <input  name="pageId" value="{{model.pid}}" style="display: none"/>
-        <input  name="websiteId" value="{{model.wid}}" style="display: none"/>
-        <input  name="widgetId" value="{{model.widget._id}}" style="display: none"/>
+    <form action="/api/uploads" method="post" enctype="multipart/form-data">
+        <input name="file" type="file" class="form-control"/>
+        <input name="width" value="{{model.widget.width}}" style="display: none"/>
+        <input name="name" value="{{model.widget.name}}" style="display: none"/>
+        <input name="userId" value="{{model.uid}}" style="display: none"/>
+        <input name="pageId" value="{{model.pid}}" style="display: none"/>
+        <input name="websiteId" value="{{model.wid}}" style="display: none"/>
+        <input name="widgetId" value="{{model.widget._id}}" style="display: none"/>
         <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
-    </form>
-        <!--<a class="btn btn-primary btn-block"-->
-           <!--href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget">Upload Image</a>-->
         <a class="btn btn-danger btn-block" ng-click="model.deleteWidget()"
            href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget">Delete</a>
 
-
+    </form>
+    <br>
+    <!--<a class="btn btn-primary btn-block"-->
+    <!--href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget">Upload Image</a>-->
 </div>

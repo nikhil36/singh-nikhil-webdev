@@ -1,27 +1,14 @@
 /**
  * Created by Nikhil on 10/24/16.
  */
-module.exports = function (app) {
+module.exports = function (app,models) {
+    var model = models.widgetModel;
 
     var multer = require('multer'); // npm install multer --save
     var upload = multer({ dest: __dirname+'/../../public/uploads' });
 
-    var widgets = [
-        {"_id": "123", "widgetType": "HEADER", "pageId": "432", "size": 2, "text": "GIZMODO"},
-        {"_id": "234", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
-        {
-            "_id": "345", "widgetType": "IMAGE", "pageId": "432", "width": "100%",
-            "url": "http://lorempixel.com/400/200/"
-        },
-        {"_id": "456", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"},
-        {"_id": "567", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
-        {
-            "_id": "678", "widgetType": "YOUTUBE", "pageId": "432", "width": "100%",
-            "url": "https://youtu.be/AM2Ivdi9c4E"
-        },
-        // {"_id": "789", "widgetType": "HTML", "pageId": "432", "text": "<p>Lorem ipsum</p>"}
-    ];
-
+//    var widgetModel = models.widgetModel;
+   
     app.post ("/api/uploads", upload.single('file'), uploadImage);
     app.post("/api/page/:pid/widget", createWidget);
     app.get("/api/page/:pid/widget", findAllWidgetsForPage);
@@ -35,14 +22,23 @@ module.exports = function (app) {
     {
         var start = req.query.start;
         var end = req.query.end;
-        console.log("sortWidget:",[start,end])
-        // console.log(widgets)
-        widgets.splice(end,0,widgets.splice(start,1)[0])
-        // console.log(widgets)
-        return
+        var pid = req.params.pid;
+        console.log([start, end]);
+
+        model
+            .reorderWidgets(pid, start, end)
+            .then(
+                function (res) {
+                    res.send(200);
+                },
+                function (error) {
+                    res.statusCode(400).send(error);
+                }
+            );
     }
     function uploadImage(req,res){
         console.log("In uploadImage api")
+        console.log(req.body)
         var wid= req.body.websiteId;
         var width= req.body.width;
         var file= req.file;
@@ -61,83 +57,101 @@ module.exports = function (app) {
         var destination   = file.destination;  // folder where file is saved to
         var size          = file.size;
         var mimetype      = file.mimetype;
+        var newWidget = {
+            url: "/uploads/" +filename,
+            name:req.body.name,
+            width:req.body.width
 
-        for(var w in widgets) {
-            if(widgets[w]._id === wgid) {
-                widgets[w].url = "/uploads/" + filename;
-            }
         }
+        model
+            .updateWidget(wgid, newWidget)
+            .then(
+                function (status) {
+                    res.redirect("/assignment/#/user/"+uid+"/website/"+wid+"/page/"+pid+"/widget");
+                },
+                function (error) {
+                    res.statusCode(404).send(error);
+                }
+            );
 
-        res.redirect("/assignment/#/user/"+uid+"/website/"+wid+"/page/"+pid+"/widget/" + wgid);
     }
     function createWidget(req, res) {
         console.log("In createWidget api")
-        var widget = req.body;
-        widget._id = (new Date()).getTime()+"";
-        widgets.push(widget);
-        res.send(widget);
+        model
+            .createWidget(req.params.pid, req.body)
+            .then(
+                function (widget) {
+
+                    console.log("In createWidget api"+widget)
+                    res.json(widget);
+                },
+                function (error) {
+                    res.statusCode(404).send(error);
+                }
+            );
     }
 
     function findAllWidgetsForPage(req, res) {
         console.log("In findAllWidgetsForPage api")
         var pid = req.params.pid;
-        var result = [];
-        for(var w in widgets) {
-            if(widgets[w].pageId === pid) {
-                result.push(widgets[w]);
-            }
-        }
-        res.json(result);
+        model
+            .findAllWidgetsForPage(pid)
+            .then(
+                function (widgets) {
+                    res.json(widgets);
+                },
+                function (error) {
+                    res.statusCode(404).send(error);
+                }
+            );
     }
 
     function findWidgetById(req, res) {
         console.log("In findWidgetById api: "+req.params.wgid)
         var wgid = ""+req.params.wgid;
-        for(var w in widgets) {
-            if(widgets[w]._id === wgid) {
-                res.send(widgets[w]);
-
-                return;
-            }
-        }
-        res.send({});
+        model
+            .findWidgetById(wgid)
+            .then(
+                function (widget) {
+                    console.log(widget);
+                    res.json(widget);
+                },
+                function (error) {
+                    res.statusCode(404).send(error);
+                }
+            )
     }
 
     function updateWidget(req, res) {
         console.log("In updateWidget api")
         var id = ""+req.params.wgid;
         var newWidget = req.body;
-        for(var w in widgets) {
-            if(widgets[w]._id === id) {
-                widgets[w].name = newWidget.name;
-                widgets[w].text = newWidget.text;
-                if(widgets[w].widgetType === 'HEADER') {
-                    widgets[w].size = newWidget.size;
-                    res.sendStatus(200);
-                    return;
+        model
+            .updateWidget(id, newWidget)
+            .then(
+                function (status) {
+                    res.send(200);
+                },
+                function (error) {
+                    res.statusCode(404).send(error);
                 }
-                if(widgets[w].widgetType === 'IMAGE' || widgets[w].widgetType === 'YOUTUBE') {
-                    widgets[w].url = newWidget.url;
-                    widgets[w].width = newWidget.width;
-                    res.sendStatus(200);
-                    return;
-                }
-            }
-        }
-        res.sendStatus(400);
+            );
     }
 
     function deleteWidget(req, res) {
         console.log("In deleteWidget api")
         var id = ""+req.params.wgid;
-        for(var w in widgets) {
-            if(widgets[w]._id === id) {
-                widgets.splice(w, 1);
-                res.sendStatus(200)
-                return;
-            }
-        }
-        res.sendStatus(400);
+        model
+            .deleteWidget(id)
+            .then(
+                function (status) {
+                    res.send(200);
+                },
+                function (error) {
+                    res.statusCode(404).send(error);
+                }
+            );
+
     }
 
 }

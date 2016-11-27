@@ -28,12 +28,12 @@
         }
 
         function createWidget(pageId, widget) {
-//            widgets.push(widget)
-            var newWidget = {
-                widgetType: widget.widgetType,
-                pageId: pageId
-            };
-            return $http.post("/api/page/" + pageId + "/widget", newWidget);
+// //            widgets.push(widget)
+//             var newWidget = {
+//                 widgetType: widget.widgetType,
+//                 pageId: pageId
+//             };
+            return $http.post("/api/page/" + pageId + "/widget", widget);
         }
 
         function findWidgetsByPageId(pageId) {

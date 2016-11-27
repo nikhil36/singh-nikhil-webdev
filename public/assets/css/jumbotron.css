@@ -67,6 +67,7 @@ body {
     min-height: 75px;
     border: 10px solid transparent;
     border-radius: 0px;
+    padding-bottom: 0px;
 
   }
   .navbar-right

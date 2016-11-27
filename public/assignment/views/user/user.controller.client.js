@@ -18,7 +18,7 @@
             var promise = UserService.findUserByCredentials(username, password);
             promise
                 .success(function (user) {
-                    if (user === '0') {
+                    if (user === null) {
                         vm.error = "Unable to login!";
                     } else {
                         $location.url("/user/" + user._id);
@@ -31,7 +31,7 @@
     }
 
     function RegisterController($location, UserService) {
-        console.log("In Regi sterController");
+        console.log("In RegisterController");
         var vm = this;
         vm.register = register;
 
@@ -40,7 +40,7 @@
                 vm.error = "Please enter all details!"
             else if (password === verifyPassword) {
                 user = {
-                    _id: '' + Math.round(getRandomArbitrary(800, 900)),
+                   // _id: '' + Math.round(getRandomArbitrary(800, 900)),
                     username: username,
                     password: password, firstName: username, lastName: username, email: username + "@abc.com"
                 }
@@ -81,7 +81,7 @@
             var promise = UserService.findUserById(vm.userId);
             promise
                 .success(function (user) {
-                    if (user != '0') {
+                     if (user != null) {
                         vm.user = user;
                     }
 

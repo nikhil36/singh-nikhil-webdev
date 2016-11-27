@@ -1,74 +1,97 @@
 /**
  * Created by Nikhil on 10/24/16.
  */
-module.exports = function (app) {
+module.exports = function (app,models) {
+    var model = models.pageModel;
+    // var pages = [
+    //     {"_id": "321", "name": "Post 1", "wid": "456"},
+    //     {"_id": "432", "name": "Post 2", "wid": "789"},
+    //     {"_id": "543", "name": "Post 3", "wid": "456"}
+    // ];
 
-    var pages = [
-        {"_id": "321", "name": "Post 1", "wid": "456"},
-        {"_id": "432", "name": "Post 2", "wid": "789"},
-        {"_id": "543", "name": "Post 3", "wid": "456"}
-    ];
-
-    app.post('/api/website/:websiteId/page', createPage);
-    app.get('/api/website/:websiteId/page', findAllPagesForWebsite);
-    app.get('/api/page/:pageId', findPageById);
-    app.put('/api/page/:pageId', updatePage);
-    app.delete('/api/page/:pageId', deletePage);
+    app.post('/api/website/:wid/page', createPage);
+    app.get('/api/website/:wid/page', findAllPagesForWebsite);
+    app.get('/api/page/:pid', findPageById);
+    app.put('/api/page/:pid', updatePage);
+    app.delete('/api/page/:pid', deletePage);
 
     function createPage(req, res) {
         console.log("In createPage api")
-        pages.push(req.body);
-        res.send(req.body);
+        var websiteId = req.params.wid;
+        var page  = req.body;
+        model
+            .createPage(websiteId, page)
+            .then(
+                function (page) {
+                    console.log(page);
+                    res.json(page);
+                },
+                function (error) {
+                    res.statusCode(404).send(error);
+                }
+            );
     }
 
     function findAllPagesForWebsite(req, res) {
         console.log("In findAllPagesForWebsite api")
-        var websiteId = req.params.websiteId;
-        var result = [];
-
-        for (var p in pages) {
-            if (pages[p].wid === websiteId)
-                result.push(pages[p]);
-        }
-        res.json(result);
+        var websiteId = req.params.wid;
+        model
+            .findAllPagesForWebsite(websiteId)
+            .then(
+                function (pages) {
+                    res.json(pages);
+                },
+                function (error) {
+                    res.statusCode(404).send(error);
+                }
+            );
     }
 
     function findPageById(req, res) {
         console.log("In findPageById api")
-        var pageId = req.params['pageId'];
-        for (var p in pages) {
-            if (pages[p]._id === pageId) {
-                res.send(pages[p])
-                return
-            }
-        }
+        var pageId = req.params.pid;
+        model
+            .findPageById(pageId)
+            .then(
+                function (page) {
+                    res.json(page);
+                },
+                function (error) {
+                    res.statusCode(404).send(error);
+                }
+            );
 
     }
 
     function updatePage(req, res) {
         console.log("In updatePage api")
-        var newPage = req.body;
-        var pageId = req.params.pageId;
-        for (var p in pages) {
-            if (pages[p]._id === pageId) {
-                pages[p] = newPage;
-                res.sendStatus(200);
-                return;
-            }
-        }
-        res.sendStatus(400);
+        var pid = req.params.pid;
+        var page = req.body;
+        model
+            .updatePage(pid, page)
+            .then(
+                function (stats) {
+                    res.send(200);
+                },
+                function (error) {
+                    res.statusCode(404).send(error);
+                }
+            );
     }
 
     function deletePage(req, res) {
         console.log("In deletePage api")
-        var pageId = req.params.pageId;
+        var pid = req.params.pid;
 
-        for (var p in pages) {
-            if (pages[p]._id === pageId) {
-                pages.splice(p, 1);
-            }
-        }
-        res.sendStatus(200);
-
+        model
+            .deletePage(pid)
+            .then(
+                function (stats) {
+                    res.send(200);
+                },
+                function (error) {
+                    res.statusCode(404).send(error);
+                }
+            );
     }
 };

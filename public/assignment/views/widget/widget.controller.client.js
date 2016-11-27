@@ -23,6 +23,7 @@
             WidgetService
                 .findWidgetsByPageId(vm.pid)
                 .then(function (response) {
+                   // console.log(response.data)
                      vm.widgets = response.data;
                     // $(".wam-widgets")
                     //     .sortable({
@@ -56,22 +57,22 @@
         function createWidget(type) {
             console.log('In createWidget:'+type);
             var widget = {
-                widgetType: type
+                type: type
             }
             WidgetService.createWidget(vm.pid, widget)
                 .success(function (response) {
                     console.log(response)
                     var newWidget = response;
-                    if (newWidget._id) {
+                        if (newWidget._id) {
                         $location.url("/user/" + vm.uid + "/website/" + vm.wid + "/page/" + vm.pid + "/widget/" + newWidget._id);
                     }
                 })
                 .error(function () {
                     vm.error = "Unable to create widget";
                 });
-
-            $location.url("/user/" + vm.uid + "/website/" + vm.wid + "/page/" + vm.pid + "/widget/" + vm.wgid);
-
+//
+     //       $location.url("/user/" + vm.uid + "/website/" + vm.wid + "/page/" + vm.pid + "/widget/" + vm.wgid);
+//
         }
 
     }
@@ -93,13 +94,16 @@
                 .findWidgetById(vm.wgid)
                 .success(function (response) {
                     vm.widget = response;
+                })
+                .error(function(){
+                    console.log("ERROR");
                 });
         }
         init();
 
         function updateWidget(widget) {
             WidgetService
-                .updateWidget(vm.wgid, widget)
+                    .updateWidget(vm.wgid, widget)
                 .success(function (response) {
                     $location.url("/user/" + vm.uid + "/website/" + vm.wid + "/page/" + vm.pid + "/widget");
                 })
