@@ -5,7 +5,7 @@ module.exports = function(){
     var mongoose = require('mongoose');
     // var connectionString = 'mongodb://127.0.0.1:27017/fall2016';
 
-    // var connectionString = 'mongodb://localhost/fall2016';
+     // var connectionString = 'mongodb://localhost/fall2016';
     var connectionString = 'mongodb://nikhilsingh:webdev@ds041556.mlab.com:41556/webbed';
 
     mongoose.connect(connectionString);

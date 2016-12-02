@@ -34,7 +34,7 @@
                         }
                     })
                     .error(function () {
-
+                        vm.error = "Unable to login!";
                     })
             }
         }
