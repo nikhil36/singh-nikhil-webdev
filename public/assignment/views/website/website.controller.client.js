@@ -48,8 +48,8 @@
                 return
             }
             var website = {
-          //      _id: '' + Math.round(getRandomArbitrary(800, 900)),
-                name: name, description:desc
+                //      _id: '' + Math.round(getRandomArbitrary(800, 900)),
+                name: name, description: desc
             }
 
             var promise = WebsiteService.createWebsite(uid, website);
@@ -95,13 +95,19 @@
 
         function updateWebsite(wid, website) {
             console.log("In updateWebsite");
-            WebsiteService.updateWebsite(vm.wid, website)
-                .success(function () {
-                    $location.url("/user/" + vm.uid + "/website");
-                })
-                .error(function () {
-                    vm.error("Unable to update the website")
-                });
+            if (website.name === '') {
+                vm.error = "Please fill all the fields"
+
+            }
+            else {
+                WebsiteService.updateWebsite(vm.wid, website)
+                    .success(function () {
+                        $location.url("/user/" + vm.uid + "/website");
+                    })
+                    .error(function () {
+                        vm.error("Unable to update the website")
+                    });
+            }
         }
 
         function deleteWebsite() {

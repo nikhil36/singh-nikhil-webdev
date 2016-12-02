@@ -102,6 +102,12 @@
         init();
 
         function updateWidget(widget) {
+            if(widget.name ==='' || widget.name == undefined)
+            {
+                vm.error = "Please fill all the fields"
+
+            }
+            else{
             WidgetService
                     .updateWidget(vm.wgid, widget)
                 .success(function (response) {
@@ -109,7 +115,7 @@
                 })
                 .error(function () {
                         vm.error = "Unable to update widget";
-                    });
+                    });}
         }
 
         function deleteWidget() {

@@ -25,7 +25,7 @@
             </div>
             <div class="col-xs-1 pull-right ">
                 <p class="navbar-text pull-right">
-                    <a ng-click="model.updateWebsite(model.website._id,model.website)"  href="#/user/{{model.uid}}/website" class="navbar-link1">
+                    <a ng-click="model.updateWebsite(model.website._id,model.website)" class="navbar-link1">
                     <span class="glyphicon glyphicon-ok"></span>
                     </a>
                 </p>
@@ -36,6 +36,7 @@
 <br>
 <br>
 <div class="container-fluid">
+
     <div class="col-xs-4 hidden-xs vertical-line">
         <div ng-repeat="site in model.websites">
             <li class="list-group-item"><a href="#/user/{{model.uid}}/website/{{site._id}}/page">
@@ -49,6 +50,9 @@
         </div>
     </div>
     <div class="col-xs-12 col-sm-8">
+        <div ng-show="model.error" class="alert alert-danger" role="alert">
+            {{model.error}}
+        </div>
         <form name="websiteForm">
             <div class="form-group">
                 <label for="name">Name</label>

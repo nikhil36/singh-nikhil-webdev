@@ -63,7 +63,7 @@
 
     }
 
-    function EditPageController($routeParams, PageService) {
+    function EditPageController($routeParams,$location, PageService) {
         console.log("In EditPageController");
         var vm = this;
         vm.wid = $routeParams.wid;
@@ -83,7 +83,13 @@
 
 
         function updatePage(page) {
+            if(page.name ==='')
+            {
+                vm.error = "Please fill all the fields"
+                return
+            }
             PageService.updatePage(vm.pageId, page);
+            $location.url("/user/" + vm.uid+"/website/"+vm.wid+"/page/");
         }
 
         function deletePage() {

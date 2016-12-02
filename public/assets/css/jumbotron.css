@@ -1,86 +1,184 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
-  padding-top: 0px;
-  padding-bottom: 20px;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 
-
-.img-middle{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+.img-middle {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
+
 #wrapper {
-  padding-left: 250px;
-  transition: all 0.4s ease 0s;
+    padding-left: 250px;
+    transition: all 0.4s ease 0s;
 }
 
 #sidebar-wrapper {
-  margin-left: -250px;
-  left: 250px;
-  width: 250px;
-  background: #CCCCCC;
-  position: fixed;
-  height: 100%;
-  overflow-y: auto;
-  z-index: 1000;
-  transition: all 0.4s ease 0s;
+    margin-left: -250px;
+    left: 250px;
+    width: 250px;
+    background: #CCCCCC;
+    position: fixed;
+    height: 100%;
+    overflow-y: auto;
+    z-index: 1000;
+    transition: all 0.4s ease 0s;
 }
 
 #page-content-wrapper {
-  width: 100%;
+    width: 100%;
 }
 
 .sidebar-nav {
-  position: absolute;
-  top: 0;
-  width: 250px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+    position: absolute;
+    top: 0;
+    width: 250px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-@media (max-width:767px) {
-  #wrapper {
-    padding-left: 0;
-  }
-  #sidebar-wrapper {
-    left: 0;
-  }
-  #wrapper.active {
-    position: relative;
-    left: 250px;
-  }
-  #wrapper.active #sidebar-wrapper {
-    left: 250px;
-    width: 250px;
-    transition: all 0.4s ease 0s;
-  }
+@media (max-width: 767px) {
+    #wrapper {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        left: 0;
+    }
+
+    #wrapper.active {
+        position: relative;
+        left: 250px;
+    }
+
+    #wrapper.active #sidebar-wrapper {
+        left: 250px;
+        width: 250px;
+        transition: all 0.4s ease 0s;
+    }
 }
 
 .navbar-brand {
-  font-size: 20px;
-  font-weight: 300;
+    font-size: 20px;
+    font-weight: 300;
+
 }
 
-  .navbar {
+.copyright-text {
+    font-size: 18px;
+    font-weight: 300;
+    color: #9d9d9d;
+
+}
+
+.navbar {
     min-height: 75px;
     border: 10px solid transparent;
     border-radius: 0px;
     padding-bottom: 0px;
 
-  }
-  .navbar-right
-  {
+
+}
+
+.navbar-right {
     padding: 0px;
-  }
+}
 
-  .navbar-header{
-    padding-right: 30px;
-  }
+.navbar-header {
+    padding-right: 0px;
+}
+.navbar-inverse{
+    margin-bottom: 0px;
+}
 
-  .nav{
+.nav {
     padding-left: 15px;
     font-size: 20px;
     font-weight: 300;
-  }
+}
+
+.profilePic {
+    width: 500px;
+    height: 500px;
+}
+
+.profilePicBg {
+    background-color: #222;
+    border-color: #080808;
+}
+.row {
+    /*margin-right: 60px;*/
+    /*margin-left: 60px;*/
+    /*background-color: white*/
+}
+.blank-col {
+    background-color: white;
+    border-color: white;
+}.row {
+     display: -webkit-box;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     display:         flex;
+     flex-wrap: wrap;
+ }
+.row > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+}
+.container-fluid{
+    padding-right: 0px;
+    padding-left: 0px;
+}
+.inactiveLink {
+    pointer-events: none;
+    cursor: default;
+}
+.row1 {
+    display: block;
+    flex-wrap: wrap;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+.h2-size{
+    margin: 0 0 0 0}
+.intro-text{
+    padding-top: 30px;
+}
+.h2, h2 {
+    font-size: 30px;
+    color: whitesmoke;
+    font-size: xx-large;
+    font-weight: 200;
+}
+
+p {
+    margin: 0 0 10px;
+    font-size: large;
+    color: rgba(245, 245, 245, 0.65);
+    font-weight: 200;
+    text-align: justify;
+}
+pre {
+    display: block;
+     padding: 0px;
+     margin: 0 0 0px;
+     font-size:large;
+        font-weight: 200;
+    /* line-height: 1.42857143; */
+    color: rgba(245, 245, 245, 0.65);
+    word-break: break-all;
+    word-wrap: break-word;
+     background-color:inherit;
+     border: 0px solid #ccc;
+    text-align: left;
+    font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    /* border-radius: 4px; */
+    /*padding-left:4em*/
+}
+
+.footer-pre{
+    text-align: center;
+}

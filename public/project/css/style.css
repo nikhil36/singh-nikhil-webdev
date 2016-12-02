@@ -1,0 +1,86 @@
+input.form-control {
+    margin-bottom: 5px;
+}
+
+body {
+    padding-top: 36px;
+}
+
+.navbar-blue {
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+.navHead {
+    padding: 5px 5px !important;
+    margin-right: 0 !important;
+    color: white;
+    background-color: #337ab7;
+    text-align:left !important;
+}
+.navbar-brandEdited {
+     float: left;
+     height: 50px;
+     padding: 15px 0px;
+     font-size: 18px;
+    line-height: 20px;
+}
+.navbar-link1 {
+    padding: 15px 0px;
+    color: #FFFFFF;
+}
+.col-edited-3 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 0px;
+    padding-left: 15px;
+}
+
+.list-group-item  {
+    padding-right:15px;
+    padding-left:15px;
+    border: 0px;
+
+}
+
+.glyphicon-padding{
+     z-index: 2;
+     position: absolute;
+     top: 0px;
+     right: 10px;
+ }
+.glyphicon-padding1{
+      z-index: 2;
+      right: 25px;
+  }
+
+.inactiveLink {
+    pointer-events: none;
+    cursor: default;
+}
+
+.jga-widget-tool {
+    position: absolute;
+    right: 15px;
+    background: white;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border-bottom-left-radius: 8px;
+    opacity: 0.7;
+}
+
+.new-upload {
+    margin-bottom: 5px;
+}
+
+.youtube-widget {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+}
+.youtube-widget iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

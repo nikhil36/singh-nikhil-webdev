@@ -3,55 +3,24 @@
  */
 (function () {
     angular
-        .module("WebAppMaker")
+        .module("YourNews")
         .factory("UserService", UserService);
 
     function UserService($http) {
 
         var api = {
             createUser: createUser,
-            updateUser: updateUser,
-            deleteUser: deleteUser,
             findUserById: findUserById,
             findUserByUsername: findUserByUsername,
             findUserByCredentials: findUserByCredentials,
-            login: login,
-            checkLogin:checkLogin,
-            logout:logout,
-            register: register,
-            findCurrentUser:findCurrentUser
-
+            updateUser: updateUser,
+            deleteUser: deleteUser,
         };
         return api;
 
-        function register(user) {
-            return $http.post("/api/register", user);
-        }
-
-        function logout() {
-            return  $http.post("/api/logout");
-        }
-        function checkLogin() {
-            return  $http.post("/api/checkLogin");
-        }
-        function login(username, password) {
-            var user = {
-                username: username,
-                password: password
-            };
-            // var url = '/api/user?username=' + username + "&password=" + password;
-            // return $http.get(url);
-
-          return  $http.post("/api/login",user);
-        }
         function createUser(user) {
             return $http.post('/api/user', user);
 
-        }
-
-        function findCurrentUser() {
-            var url = '/api/user';
-            return $http.get(url);
         }
 
         function findUserById(id) {

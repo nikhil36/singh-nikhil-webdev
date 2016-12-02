@@ -1,47 +1,36 @@
 /**
- * Created by Nikhil on 10/12/16.
+ * Created by Nikhil on 11/28/16.
  */
 (function () {
     angular
-        .module("WebAppMaker")
+        .module("YourNews")
         .controller("LoginController", LoginController)
         .controller("RegisterController", RegisterController)
         .controller("ProfileController", ProfileController)
 
 
-    function LoginController($location, UserService, $rootScope) {
+    function LoginController($location, UserService) {
         console.log("In LoginController");
         var vm = this;
         vm.login = login;
 
         function login(username, password) {
-            //console.log([username, password])
-                if (username == undefined || password == undefined) {
-                    vm.error = "Please enter username and password";
-                    //  $location.url("/login/");
-                }
-            else {
-                var promise = UserService.login(username, password);
-                promise
-                    .success(function (response) {
-                        if (response === null) {
-                            vm.error = "Unable to login!";
-                        } else {
-                            console.log(response)
-                            var user = response;
-                            $rootScope.currentUser = user;
-                            $location.url("/user/" + user._id);
-                        }
-                    })
-                    .error(function () {
+            var promise = UserService.findUserByCredentials(username, password);
+            promise
+                .success(function (user) {
+                    if (user === null) {
+                        vm.error = "Unable to login!";
+                    } else {
+                        $location.url("/user/" + user._id);
+                    }
+                })
+                .error(function () {
 
-                    })
-            }
+                })
         }
-
     }
 
-    function RegisterController($location, UserService, $rootScope) {
+    function RegisterController($location, UserService) {
         console.log("In RegisterController");
         var vm = this;
         vm.register = register;
@@ -51,19 +40,17 @@
                 vm.error = "Please enter all details!"
             else if (password === verifyPassword) {
                 user = {
-                    // _id: '' + Math.round(getRandomArbitrary(800, 900)),
+                   // _id: '' + Math.round(getRandomArbitrary(800, 900)),
                     username: username,
                     password: password, firstName: username, lastName: username, email: username + "@abc.com"
                 }
 
-                var promise = UserService.register(user);
+                var promise = UserService.createUser(user);
                 promise
-                    .success(function (response) {
-                        if (response === null) {
+                    .success(function (user) {
+                        if (user === null) {
                             vm.error = "Unable to create user now!";
                         } else {
-                            var user = response;
-                            $rootScope.currentUser = user;
                             $location.url("/user/" + user._id);
                         }
                     })
@@ -86,16 +73,15 @@
         console.log("In ProfileController")
 
         var vm = this;
-        //vm.userId = $routeParams["uid"];
+        vm.userId = $routeParams["uid"];
         vm.updateUser = updateUser;
         vm.unregisterUser = unregisterUser;
-        vm.logout = logout;
 
         function init() {
-            var promise = UserService.findCurrentUser();
+            var promise = UserService.findUserById(vm.userId);
             promise
                 .success(function (user) {
-                    if (user != null) {
+                     if (user != null) {
                         vm.user = user;
                     }
 
@@ -118,15 +104,7 @@
                     $location.url('/login');
                 })
                 .error(function () {
-
-                });
-
-        }
-
-        function logout() {
-            UserService.logout()
-                .success(function () {
-                    $location.url('/login');
+                    
                 });
 
         }

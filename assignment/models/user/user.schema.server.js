@@ -5,9 +5,17 @@ module.exports = function () {
     var mongoose =  require("mongoose");
 
     var userSchema = mongoose.Schema({
-        username: {type: String, required: true},
+        username: String,
         password: String,
         firstName: String,
+        facebook: {
+            token: String,
+            id: String
+        },
+        google: {
+            id: String,
+            token: String
+        },
         lastName: String,
         email: String,
         phone: String,
