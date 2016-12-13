@@ -1,29 +1,60 @@
-<nav class="navbar navHead navbar-fixed-top">
+<nav class="navbar-inverse navHead navbar-fixed-top ">
     <div class="container-fluid">
-        <div class="row">
+        <div class="row navHead">
             <div class="col-xs-12 navbar-header navbar-brand">
-                 <p class="text-center">YourNews</p>
+                <p class="text-center">YourNews!</p>
 
-                 </div>
+            </div>
         </div>
+
     </div>
 </nav>
-<br><br>
+<br><br><br><br>
 <div class="container">
-    <div ng-show="model.error" class="alert alert-danger" role="alert">
-        {{model.error}}
+    <div class="row">
+
+        <div class="col-sm-8">
+            <br>
+            <p class="frontpage">
+                Tired of opening multiple sites for reading headlines?
+            </p>
+            <br><br>
+            <p class="frontpage">
+                YourNews! is the first site which brings together headlines from multiple sources so that
+                you can read all the headlines that matter to you in a single place.
+
+                So start today by login in or registering and saving your preferred News sources and News headlines.
+            </p>
+
+        </div>
+        <div class="col-sm-4">
+            <div ng-show="model.error" class="alert alert-danger" role="alert">
+                {{model.error}}
+            </div>
+            <h1>Login</h1>
+            <input ng-model="model.username" type="text"
+                   class="form-control"
+                   placeholder="username"/>
+            <input ng-model="model.password" type="password"
+                   class="form-control"
+                   placeholder="password"/>
+
+            <a class="btn btn-primary btn-block"
+               ng-click="model.login(model.username,model.password)">Login</a>
+            <a class="btn btn-success btn-block"
+               href="#/register">Register</a>
+            <!--<a href="/auth/project/google" class="btn btn-danger btn-block">-->
+                <!--<span class="fa fa-google-plus"></span>-->
+                <!--Google-->
+            <!--</a>-->
+            <!--<a href="/auth/project/facebook" class="btn btn-primary btn-block">-->
+                <!--<span class="fa fa-facebook-square"></span>Facebook-->
+            <!--</a>-->
+        </div>
     </div>
-    <h1>Login</h1>
-    <input ng-model="model.username" type="text"
-           class="form-control"
-           placeholder="username"/>
-    <input ng-model="model.password"  type="password"
-           class="form-control"
-           placeholder="password"/>
+    <p class="frontpage">
+        <br><br>
+        We would like to Thank <a href="https://newsapi.org">News Api</a> for providing the content.
 
-    <a class="btn btn-primary btn-block"
-       ng-click="model.login(model.username,model.password)">Login</a>
-    <a class="btn btn-success btn-block"
-       href="#/register">Register</a>
-
+    </p>
 </div>

@@ -4,6 +4,7 @@
   "description": "Web Dev at Northeastern University",
   "main": "server.js",
   "dependencies": {
+    "async": "^2.1.4",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.1",
     "cookie-parser": "^1.4.3",
@@ -15,6 +16,8 @@
     "passport-facebook": "^2.1.1",
     "passport-google-oauth": "^1.0.0",
     "passport-local": "^1.0.0",
+    "request": "^2.79.0",
+    "sync-request": "^3.0.1",
     "textangular": "^1.5.13"
   },
   "devDependencies": {},

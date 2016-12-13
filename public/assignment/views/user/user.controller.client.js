@@ -108,6 +108,7 @@
         init();
 
         function updateUser() {
+            console.log("In updateUser")
             UserService.updateUser(vm.user);
 
         }

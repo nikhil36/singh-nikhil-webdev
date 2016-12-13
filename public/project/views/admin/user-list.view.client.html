@@ -1,0 +1,64 @@
+<!--<nav class="navbar-inverse navHead navbar-fixed-top">-->
+    <!--<div class="container-fluid">-->
+        <!--<div class="row">-->
+            <!--<div class="col-xs-10">-->
+                <!--<p class="navbar-text pull-left">-->
+                    <!--<a href="#/admin" class="navbar-link1">-->
+                        <!--<span class="glyphicon glyphicon-chevron-left"></span>-->
+                    <!--</a>-->
+                <!--</p>-->
+                <!--<label class="navbar-brandEdited">User List</label>-->
+            <!--</div>-->
+
+        <!--</div>-->
+    <!--</div>-->
+<!--</nav>-->
+<nav class="navbar-inverse navHead navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header navHead ">
+            <p class="navbar-text pull-left">
+                <a href="#/admin" class="navbar-link1">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </p>
+            <a class="navbar-brand inactiveLink">User List</a>
+
+        </div>
+    </div>
+</nav>
+<br>
+<br><br>
+<br>
+
+
+<div class="container-fluid">
+    <div class="col-xs-12">
+    <div ng-repeat="user in model.users">
+        <li class="list-group-item">
+            <a href="#/user/{{user._id}}">
+                {{user.firstName}} {{user.lastName}}
+            </a>
+
+        </li>
+    </div>
+        </div>
+</div>
+<br><br><br><br>
+
+<nav class="navbar-inverse navHead navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="row ">
+            <div class="col-xs-6">
+            </div>
+
+            <div class="col-xs-6">
+                <p class="navbar-text pull-right">
+                    <a href="#/user/{{model.uid}}" class="navbar-link1">
+                       <span class="glyphicon glyphicon-user">
+                           </span>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</nav>

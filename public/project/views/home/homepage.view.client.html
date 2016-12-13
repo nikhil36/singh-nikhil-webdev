@@ -1,0 +1,45 @@
+<nav class="navbar-inverse navHead navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header navHead ">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand inactiveLink">YourNews!</a>
+        </div>
+        <div class=" collapse navbar-collapse navbar-right navHead " id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li><a href="#/user">Profile</a></li>
+                <li><a href="#/user/{{model.uid}}/links">My Links</a></li>
+                <li><a href="#/user/{{model.uid}}/sources">My Sources</a></li>
+                <li><a href="#/search">Search users</a></li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+<br><br><br>
+
+
+<div ng-repeat="news in model.news">
+    <li class="list-group-item">
+        <div class="row">
+            <h3 class="pull-left pull-left-heading" style=""><a href="{{news.url}}">{{news.title}}</a></h3>
+        </div>
+        <div class="row pull-left-news">
+            <div class="col-sm-4">
+            <img class="img-responsive" ng-src="{{news.urlToImage}}">
+            </div>
+            <div class="col-sm-6">
+                <p class="fa-paragraph news-para">{{news.description}}</p>
+            </div>
+            <div class="col-sm-2">
+                <a confirmed-click="model.saveLink({{news}})"
+                   ng-confirm-click="Are you sure you want to save the link for this headline">
+                    {{source.name}} <span class="glyphicon glyphicon-plus pull-right"></span>
+                </a>
+            </div>
+        </div>
+    </li>
+</div>

@@ -1,0 +1,83 @@
+ <nav class="navbar-inverse navHead navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header navHead ">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <p class="navbar-text pull-left">
+                    <a href="#/user/{{model.uid}}/  " class="navbar-link1">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                </p>
+                <a class="navbar-brand inactiveLink">YourNews!</a>
+            </div>
+            <div class=" collapse navbar-collapse navbar-right navHead " id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="#/user/{{model.uid}}/links">My Links</a></li>
+                    <li><a href="#/user/{{model.uid}}/addNewsSource">Add Sources</a></li>
+                    <li><a href="#/search">Search users</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+</nav>
+
+
+<br>
+<br><br><br>
+
+<div class="container-fluid">
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+    <div ng-show="model.message" class="alert alert-success" role="alert">
+        {{model.message}}
+    </div>
+
+    <div class="col-xs-12">
+        <div ng-repeat="source in model.sources">
+
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-sm-3">
+                <a href="#/user/{{model.uid}}/source/{{source.id}}">
+                <img class='img-responsive' ng-src="{{source.urlsToLogos[0].small}}">
+                    </a></div>
+
+                    <div class="col-sm-7 visible-lg">
+                        <a href="#/user/{{model.uid}}/source/{{source.id}}">
+                        <text class="text-center">{{source.name}}</text></a>
+                    </div>
+                    <div class="col-sm-2">
+                <a ng-click="model.deleteSource(source)">
+                    <br>
+                    <i class="glyphicon glyphicon-remove pull-right"></i></a>
+                        </div>
+                </div>
+            </li>
+        </div>
+    </div>
+
+</div>
+<br><br><br><br>
+
+<nav class="navbar-inverse navHead navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="row ">
+            <div class="col-xs-6">
+            </div>
+
+            <div class="col-xs-6">
+                <p class="navbar-text pull-right">
+                    <a href="#/user/{{model.uid}}" class="navbar-link1">
+                       <span class="glyphicon glyphicon-user">
+                           </span>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</nav>

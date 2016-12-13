@@ -1,0 +1,60 @@
+<nav class="navbar-inverse navHead navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header navHead ">
+            <p class="navbar-text pull-left">
+                <a href="#/user" class="navbar-link1">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </p>
+            <a class="navbar-brand inactiveLink">Admin Operations</a>
+
+        </div>
+    </div>
+</nav>
+<br>
+<br><br>
+<br>
+
+
+<div class="container-fluid">
+
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+    <div ng-show="model.message" class="alert alert-success" role="alert">
+        {{model.message}}
+    </div>
+    <div class="col-xs-12">
+
+            <li class="list-group-item">
+                <a href="#/admin/listUsers">Manage Users</a>
+            </li>
+            <li class="list-group-item">
+                <a href="#/admin/editNewsSource">Edit existing News sources</a>
+            </li>
+
+            <li class="list-group-item">
+                <a href="#/admin/addNewsSource">Add News sources</a>
+            </li>
+
+    </div>
+</div>
+<br><br><br><br>
+
+<nav class="navbar-inverse navHead navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="row ">
+            <div class="col-xs-6">
+            </div>
+
+            <div class="col-xs-6">
+                <p class="navbar-text pull-right">
+                    <a href="#/user/{{model.uid}}" class="navbar-link1">
+                       <span class="glyphicon glyphicon-user">
+                           </span>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</nav>

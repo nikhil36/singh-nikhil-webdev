@@ -17,9 +17,11 @@
             findUserByCredentials: findUserByCredentials,
             login: login,
             checkLogin:checkLogin,
+            checkAdmin:checkAdmin,
             logout:logout,
             register: register,
-            findCurrentUser:findCurrentUser
+            findCurrentUser:findCurrentUser,
+
 
         };
         return api;
@@ -50,6 +52,7 @@
         }
 
         function findCurrentUser() {
+            console.log("In findCurrentUser")
             var url = '/api/user';
             return $http.get(url);
         }
@@ -78,6 +81,9 @@
         function deleteUser(userId) {
             var url = '/api/user/'+userId
             return $http.delete(url);
+        }
+        function checkAdmin() {
+            return $http.post("/api/checkAdmin");
         }
 
 

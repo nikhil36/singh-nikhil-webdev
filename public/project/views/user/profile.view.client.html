@@ -1,21 +1,35 @@
-<nav class="navbar navHead navbar-fixed-top">
+<!--<nav class="navbar-inverse navHead navbar-fixed-top">-->
+    <!--<div class="container-fluid">-->
+            <!--<div class="col-xs-6 navbar-header navHead">-->
+                <!--<p class="navbar-text pull-left">-->
+                    <!--<a href="#/admin/listUsers" class="navbar-link1" ng-show="model.role  =='ADMIN'">-->
+                        <!--<span class="glyphicon glyphicon-chevron-left"></span>-->
+                    <!--</a>-->
+                <!--</p>-->
+                <!--<label class="navbar-brandEdited">Profile</label>-->
+            <!--</div>-->
+            <!--<div class="col-xs-6">-->
+                <!--<p class="navbar-text pull-right">-->
+                    <!--<a ng-click="model.updateUser()" class="navbar-link1">-->
+                        <!--<span class="glyphicon glyphicon-ok"></span>-->
+                    <!--</a>-->
+                <!--</p>-->
+            <!--</div>-->
+        <!--</div>-->
+<!--</nav>-->
+<nav class="navbar-inverse navHead navbar-fixed-top">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-6 navbar-header">
-                <label class="navbar-brandEdited">Profile</label>
-            </div>
-            <div class="col-xs-6">
-                <p class="navbar-text pull-right">
-                    <a ng-click="model.updateUser()" class="navbar-link1">
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </a>
-                </p>
-            </div>
+        <div class="navbar-header navHead ">
+            <a class="navbar-brand inactiveLink">Profile</a>
         </div>
-    </div>
-</nav>
+        </div>
+    </nav>
+
 <br>
 <br>
+<br>
+<br>
+
 <div class="container">
 
     <form>
@@ -38,21 +52,29 @@
                    placeholder="Wonderland">
         </div>
     </form>
-    <a class="btn btn-primary btn-block"
-       href="#/user/{{model.user._id}}/website">Websites</a>
+    <a class="btn btn-primary btn-block" ng-show="model.user.role  =='ADMIN' && model.role  !='ADMIN'"
+       href="#admin">Admin page</a>
+    <a class="btn btn-primary btn-block" ng-show="model.role  =='ADMIN'"
+       ng-click="model.makeAdmin(model.user)">Make Admin</a>
+    <a class="btn btn-primary btn-block" ng-show="model.role  =='ADMIN'"
+       ng-click="model.removeUser(model.user)">RemoveUser</a>
+    <a class="btn btn-primary btn-block" ng-show="model.role  !='ADMIN'"
+       href="#/user/{{model.user._id}}/sources">My Sources</a>
+
     <a class="btn btn-danger  btn-block"
-       href="#/login">Logout</a>
-    <a class="btn btn-warning  btn-block"
+       ng-click="model.logout()" ng-show="model.role  !='ADMIN'">Logout</a>
+    <a class="btn btn-warning  btn-block" ng-show="model.role  !='ADMIN'"
        ng-click="model.unregisterUser()">Unregister</a>
+    {{mode.user}}
 </div>
 <br><br><br><br>
-<nav class="navbar navHead navbar-fixed-bottom">
+<nav class="navbar-inverse navHead navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="row ">
             <div class="col-xs-6"></div>
             <div class="col-xs-6">
                 <p class="navbar-text pull-right">
-                    <a class="navbar-link1">
+                    <a href="#/user/" class="navbar-link1">
                         <span class="glyphicon glyphicon-user"></span>
                     </a>
                 </p>
@@ -60,3 +82,5 @@
         </div>
     </div>
 </nav>
+
+

@@ -38,12 +38,15 @@
                    placeholder="Wonderland">
         </div>
     </form>
+    <a class="btn btn-primary btn-block" ng-show="model.user.role  =='ADMIN'"
+       href="#admin">Admin</a>
     <a class="btn btn-primary btn-block"
        href="#/user/{{model.user._id}}/website">Websites</a>
     <a class="btn btn-danger  btn-block"
        ng-click="model.logout()">Logout</a>
     <a class="btn btn-warning  btn-block"
        ng-click="model.unregisterUser()">Unregister</a>
+    {{mode.user}}
 </div>
 <br><br><br><br>
 <nav class="navbar navHead navbar-fixed-bottom">
@@ -60,3 +63,5 @@
         </div>
     </div>
 </nav>
+
+

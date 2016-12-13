@@ -17,7 +17,7 @@ module.exports = function () {
         findUserById: findUserById,
         findUserByCredentials: findUserByCredentials,
         findUserByFacebookId: findUserByFacebookId,
-        findUserByGoogleId:findUserByGoogleId
+        findUserByGoogleId:findUserByGoogleId,
     };
 
     return api;

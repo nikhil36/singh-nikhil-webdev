@@ -20,9 +20,10 @@ module.exports = function () {
         email: String,
         phone: String,
         role:{type: String, enum:['ADMIN','STUDENT','FACULTY'],default:'STUDENT'},
-        websites: [{type: mongoose.Schema.Types.ObjectId, ref: 'Website'}],
-        type:{type:String,default:'WAM'},
+        type:{type:String,default:'PROJECT'},
+        sources: [{type: mongoose.Schema.Types.ObjectId, ref: 'NewsSource'}],
+        links: [],
         dateCreated: {type: Date, default: Date.now()}
-    }, {collection: "assignment.user"});
+    }, {collection: "project.user"});
     return userSchema;
 };

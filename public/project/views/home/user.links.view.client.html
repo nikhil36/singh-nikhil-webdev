@@ -1,0 +1,23 @@
+<nav class="navbar-inverse navHead navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header navHead ">
+            <p class="navbar-text pull-left">
+                <a href="#/user/{{model.uid}}/sources" class="navbar-link1">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </p>
+            <a class="navbar-brand inactiveLink">New Sources</a>
+
+        </div>
+    </div>
+</nav>
+<br><br><br>
+
+
+<div ng-repeat="link in model.links">
+    <li class="list-group-item ">
+
+        <h3 class="list-link"><a href="{{link.url}}">{{$index+1}}. {{link.description}}</a></h3>
+
+    </li>
+</div>

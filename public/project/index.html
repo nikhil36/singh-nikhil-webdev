@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <title>Project Home Page</title>
+    <title>YourNews!</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="../assets/css/jquery-ui.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet"/>
@@ -14,15 +14,27 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js"></script>
 
-
     <script src="app.js"></script>
-    <script src="config.js"></script>
+
     <script src="views/user/user.controller.client.js"></script>
+    <script src="views/admin/admin.controller.client.js"></script>
+    <script src="views/home/homepage.controller.client.js"></script>
+    <script src="config.js"></script>
 
 
     <script src="services/user.service.client.js"></script>
+    <script src="services/new-source.service.client.js"></script>
+    <script src="services/homepage.service.client.js"></script>
+    <script src="directives/ng-confirm-click.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
+          type="text/css">
+    <script src="../js/freelancer.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
 
-   </head>
+</head>
 <body>
 <div ng-view></div>
 </body>

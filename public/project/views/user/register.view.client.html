@@ -1,18 +1,18 @@
-<nav class="navbar navHead navbar-fixed-top">
+<nav class="navbar-inverse navHead navbar-fixed-top">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-12 navbar-header navbar-brand">
-                <p class="text-center">WebAppMaker</p>
-            </div>
+        <div class="navbar-header navHead ">
+            <a class="navbar-brand inactiveLink">Register</a>
         </div>
     </div>
 </nav>
-<br><br>
+
+<br><br><br>
+<br>
 <div class="container">
     <div ng-show="model.error" class="alert alert-danger" role="alert">
         {{model.error}}
     </div>
-    <h1>Register</h1>
+    <h1></h1>
     <input ng-model="model.username" type="text"
            class="form-control" placeholder="username"/>
     <input ng-model="model.password" type="password"
